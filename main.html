@@ -3,29 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <h2>Click 이벤트 실습</h2>
-    <button id="countBtn"></button>
-    <button id="resetBtn">초기화</button>
-
-    <h2>Change 이벤트 실습</h2>
-    <label>배경 색 선택</label>
-    <select id="colorSelect">
-      <option value="gray">gray</option>
-      <option value="skyblue">skyblue</option>
-      <option value="pink">pink</option>
-      <option value="lightgreen">lightgreen</option>
-    </select>
-    <div id="colorBox"></div>
-
-    <h2>Submit 이벤트</h2>
-    <form id="nameForm">
-      <input type="text" placeholder="이름 입력" id="nameInput" />
-      <button type="submit">제출</button>
+    <h1>나의 To-Do List</h1>
+    <form id="toDoForm">
+      <input type="text" placeholder="할 일을 입력하세요." id="toDoInput" />
+      <button type="submit">추가</button>
     </form>
-    <p id="submitResult"></p>
+    <ul id="toDoList"></ul>
   </body>
 </html>

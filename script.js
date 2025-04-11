@@ -1,38 +1,26 @@
-let count = 0;
+const toDoForm = document.querySelector("#toDoForm");
+const toDoInput = document.querySelector("#toDoInput");
+const toDoList = document.querySelector("#toDoList");
 
-const countBtn = document.querySelector("#countBtn");
-const resetBtn = document.querySelector("#resetBtn");
+toDoForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // 새로고침 방지
 
-countBtn.innerText = count;
+  const toDoText = toDoInput.value.trim(); // trim() -> 좌우 공백 없앰
+  if (toDoText == "") return;
 
-countBtn.addEventListener("click", () => {
-  countBtn.innerText = ++count;
-});
+  const toDoItem = document.createElement("li");
+  toDoItem.innerText = toDoText;
+  toDoItem.className = "toDoItem"; // CSS 설정을 하기위해서 className을 줌
 
-resetBtn.addEventListener("click", () => {
-  count = 0;
-  countBtn.innerText = count;
-});
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "삭제";
+  deleteBtn.className = "deleteBtn";
 
-const colorSelect = document.querySelector("#colorSelect");
-const colorBox = document.querySelector("#colorBox");
+  deleteBtn.addEventListener("click", () => {
+    toDoList.removeChild(toDoItem);
+  });
 
-colorBox.style.width = "100px";
-colorBox.style.height = "100px";
-colorBox.style.backgroundColor = "gray";
-colorBox.style.marginTop = "10px";
-
-colorSelect.addEventListener("change", (e) => {
-  console.log(e);
-  colorBox.style.backgroundColor = e.target.value;
-});
-
-const nameForm = document.querySelector("#nameForm");
-const nameInput = document.querySelector("#nameInput");
-const submitResult = document.querySelector("#submitResult");
-
-nameForm.addEventListener("submit", (e) => {
-  console.log(e);
-  e.preventDefault();
-  submitResult.innerText = `안녕하세요, ${nameInput.value}님!`;
+  toDoItem.appendChild(deleteBtn);
+  toDoList.appendChild(toDoItem);
+  toDoInput.value = "";
 });
